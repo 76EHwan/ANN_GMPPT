@@ -1,0 +1,91 @@
+{
+  "aton_execution_time": [
+    {
+      "c_layer_name": "EpochBlock_1 -> 4",
+      "counters": [
+        304,
+        13640,
+        278
+      ],
+      "cycles": 14223,
+      "cycles_by_macc": 0,
+      "duration_ms": 0.023706623257603497,
+      "percentage": 100.0
+    }
+  ],
+  "environment": {
+    "generated_model": {
+      "generated_time": "2026-06-01T12:11:10+0900",
+      "name": "network"
+    },
+    "network_signature": "0xda112f13a75fd483",
+    "target": "stm32 family - 0x486 - STM32N6xx @600/400MHz",
+    "test_name": "",
+    "tools": [
+      {
+        "arguments": "validate --model C:\\Users\\kth59\\OneDrive\\Desktop\\tjs\\0531\\gmpp_model_int8.tflite --valinput C:\\Users\\kth59\\OneDrive\\Desktop\\tjs\\0531\\validation_data_cubeai.npz --mode target --st-neural-art user_profile@C:\\Users\\kth59\\.stm32cubeaistudio\\workspace\\ANN_GMPPT\\.ai\\run\\run-1\\.ai\\profile-neural-art.json --name network --verbosity 1 --c-api st-ai --target stm32n6 --workspace C:\\Users\\kth59\\.stm32cubeaistudio\\workspace\\ANN_GMPPT\\.ai\\run\\run-1\\.ai\\st_ai_ws --output C:\\Users\\kth59\\.stm32cubeaistudio\\workspace\\ANN_GMPPT\\.ai\\run\\run-1\\.ai\\st_ai_output --desc serial:COM7:115200 --save-csv",
+        "environment": [
+          "STATS_TYPE=STM32CUBEAI-STUDIO"
+        ],
+        "input_model": {
+          "model_files": [
+            {
+              "name": "gmpp_model_int8.tflite",
+              "signature": "0xd539b0a91f807b800e7b8f925e9410e5"
+            }
+          ],
+          "n_params": 1089,
+          "name": "gmpp_model_int8",
+          "size": 1236,
+          "type": "tflite"
+        },
+        "name": "ST.EdgeAI.Core",
+        "version": "4.0.0-20500 359356bb0"
+      }
+    ]
+  },
+  "json_schema_version": "2.0",
+  "validation": {
+    "device": "VALIDATION_TARGET",
+    "val_error": 0.0007411587866954505,
+    "val_error_desc": "x-cross (rmse) #1",
+    "val_metrics": [
+      {
+        "acc": "n.a.",
+        "cos": 0.9994367361068726,
+        "desc": "TARGET c-model #1",
+        "l2r": 0.03363056853413582,
+        "mae": 0.008982962928712368,
+        "mean": -0.0022580481600016356,
+        "nse": 0.9728597643316141,
+        "rmse": 0.025511914864182472,
+        "snr": 29.44112777709961,
+        "std": 0.02541496604681015
+      },
+      {
+        "acc": "n.a.",
+        "cos": 0.9994373321533203,
+        "desc": "original model #1",
+        "l2r": 0.03360709547996521,
+        "mae": 0.00897268857806921,
+        "mean": -0.0022170324809849262,
+        "nse": 0.9729007550814576,
+        "rmse": 0.02549264207482338,
+        "snr": 29.447693824768066,
+        "std": 0.025399230420589447
+      },
+      {
+        "acc": "n.a.",
+        "cos": 0.999999463558197,
+        "desc": "X-cross #1",
+        "l2r": 0.0009770176839083433,
+        "mae": 0.0001250000059371814,
+        "mean": -4.101562444702722e-05,
+        "nse": 0.9999769416529367,
+        "rmse": 0.0007411587866954505,
+        "snr": 60.201454162597656,
+        "std": 0.0007401155889965594
+      }
+    ]
+  }
+}

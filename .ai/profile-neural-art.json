@@ -1,0 +1,8 @@
+{
+  "Profiles": {
+    "user_profile": {
+      "memory_pool": "C:\\Users\\kth59\\.stm32cubeaistudio\\workspace\\ANN_GMPPT\\.ai\\memory_pool.mpool",
+      "options": "--native-float --cache-maintenance --Ocache-opt --enable-virtual-mem-pools --Os --Oauto-sched --enable-epoch-controller"
+    }
+  }
+}

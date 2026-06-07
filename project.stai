@@ -1,0 +1,23 @@
+{
+  "toolchain": "STM32CubeIDE",
+  "variant": "ApplicationTemplate",
+  "fromMx": false,
+  "isGenerated": true,
+  "name": "ANN_GMPPT",
+  "createdAt": 1780283036975,
+  "lastModified": 1780284182427,
+  "lastAccessed": 1780284182425,
+  "path": "C:\\Users\\kth59\\.stm32cubeaistudio\\workspace",
+  "board": "NUCLEO-N657X0-Q",
+  "mcu": "",
+  "type": "BYOM",
+  "uartInstance": {
+    "rxpin": "PE6",
+    "txpin": "PE5",
+    "usart": "USART1",
+    "baudrate": 115200
+  },
+  "lastGenerationRunId": "run-1",
+  "context": "Appli",
+  "contextProject": "FullSecure"
+}

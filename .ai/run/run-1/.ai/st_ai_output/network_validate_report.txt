@@ -1,0 +1,146 @@
+ST Edge AI Core v4.0.0-20500 359356bb0
+Created date          : 2026-06-01 12:17:46
+Parameters            : validate --model C:\Users\kth59\OneDrive\Desktop\tjs\0531\gmpp_model_int8.tflite --valinput C:\Users\kth59\OneDrive\Desktop\tjs\0531\validation_data_cubeai.npz --mode target --st-neural-art user_profile@C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\run\run-1\.ai\profile-neural-art.json --name network --verbosity 1 --c-api st-ai --target stm32n6 --workspace C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\run\run-1\.ai\st_ai_ws --output C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\run\run-1\.ai\st_ai_output --desc serial:COM7:115200 --save-csv
+
+Model name - gmpp_model_int8
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+m_id   layer (original)               oshape        param/size     macc                connected to 
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+0      serving_default_scan_buf0 ()   [b:1,c:16]                                                    
+       tfl_pseudo_qconst5 ()          [b:32,c:16]   512/512                                         
+       tfl_pseudo_qconst4 ()          [b:32]        32/128                                          
+       gemm_0 (FULLY_CONNECTED)       [b:1,c:32]                    544   serving_default_scan_buf0 
+                                                                                 tfl_pseudo_qconst5 
+                                                                                 tfl_pseudo_qconst4 
+       nl_0_nl (FULLY_CONNECTED)      [b:1,c:32]                     32                      gemm_0 
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+1      tfl_pseudo_qconst3 ()          [b:16,c:32]   512/512                                         
+       tfl_pseudo_qconst2 ()          [b:16]        16/64                                           
+       gemm_1 (FULLY_CONNECTED)       [b:1,c:16]                    528                     nl_0_nl 
+                                                                                 tfl_pseudo_qconst3 
+                                                                                 tfl_pseudo_qconst2 
+       nl_1_nl (FULLY_CONNECTED)      [b:1,c:16]                     16                      gemm_1 
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+2      tfl_pseudo_qconst1 ()          [b:1,c:16]    16/16                                           
+       tfl_pseudo_qconst ()           [b:1]         1/4                                             
+       gemm_2 (FULLY_CONNECTED)       [b:1,c:1]                      17                     nl_1_nl 
+                                                                                 tfl_pseudo_qconst1 
+                                                                                  tfl_pseudo_qconst 
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+3      nl_3 (LOGISTIC)                [b:1,c:1]                      10                      gemm_2 
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+model: macc=1,147 weights=1,236 activations=-- io=--
+ 
+Setting validation data...
+ loading file: C:\Users\kth59\OneDrive\Desktop\tjs\0531\validation_data_cubeai.npz
+  available entries: ['X', 'y'] selector="None"
+   samples are reshaped: (4000, 16) -> (4000, 1, 1, 16)
+   samples are reshaped: (4000, 1) -> (4000, 1, 1, 1)
+   I[1]: (4000, 1, 1, 16)/float32, min/max=[-0.043068, 1.020227], mean/std=[0.468927, 0.314137]
+    c/I[1] conversion [Q(0.00415258,-118)]-> (4000, 1, 1, 16)/int8, min/max=[-128, 127], mean/std=[-5.072859, 75.648013]
+    m/I[1] conversion [Q(0.00415258,-118)]-> (4000, 1, 1, 16)/int8, min/max=[-128, 127], mean/std=[-5.072859, 75.648013]
+   O[1]: (4000, 1, 1, 1)/float32, min/max=[0.252141, 0.893808], mean/std=[0.740468, 0.154839]
+ 
+Running the ST.AI c-model (AI RUNNER)...(name=network, mode=TARGET)
+
+ Proto-buffer driver v2.1 (msg v3.2) (Serial driver v1.0 - COM7:115200) ['network']
+  
+  Summary 'network' - ['network']
+  -------------------------------------------------------------------------------------------------------------------------------------------
+  I[1/1] 'Input_0_out_0'       :   int8[1,16], 16 Bytes, QLinear(0.004152578,-118,int8), activations                                         
+  O[1/1] 'Quantize_14_out_0'   :   int8[1,1], 1 Bytes, QLinear(0.003906250,-128,int8), activations                                           
+  n_nodes                      :   1                                                                                                         
+  compile_datetime             :   Jun  1 2026 12:10:36                                                                                      
+  -------------------------------------------------------------------------------------------------------------------------------------------
+  protocol                     :   Proto-buffer driver v2.1 (msg v3.2) (Serial driver v1.0 - COM7:115200)                                    
+  tools                        :   ST Neural ART (st-ai api) v1.1.3                                                                          
+  runtime lib                  :   atonn-v1.1.3-262-g7cc65410 (optimized SW lib v1.1.3-71120109 GCC)                                         
+  capabilities                 :   IO_ONLY, PER_LAYER, PER_LAYER_WITH_DATA                                                                   
+  device.desc                  :   stm32 family - 0x486 - STM32N6xx @600/400MHz                                                              
+  device.attrs                 :   fpu,core_icache,core_dcache,npu_cache=1,mcu_freq=600MHz,noc_freq=400MHz,npu_freq=800MHz,nic_freq=800MHz   
+  -------------------------------------------------------------------------------------------------------------------------------------------
+ Warning: C-network signature checking is skipped on ST Neural-ART NPU
+ 
+  
+  ST.AI Profiling results v2.0 - "network"
+  ----------------------------------------------------------------------------
+  nb sample(s)                   :   4000                                     
+  duration                       :   0.024 ms by sample (0.023/0.094/0.001)   
+  CPU cycles                     :   [304 13,640 278]                         
+  network initialize time (ms)   :   0.000                                    
+  ----------------------------------------------------------------------------
+   
+   Inference time per node
+   -------------------------------------------------------------------------------------------------------------------
+   c_id    m_id   type                 dur (ms)         %     cumul  CPU cycles                   name                
+   -------------------------------------------------------------------------------------------------------------------
+   0       -      epoch (EC)              0.024   100.00%   100.00%  [    304  13,640     278 ]   EpochBlock_1 -> 4   
+   -------------------------------------------------------------------------------------------------------------------
+   total                                  0.024                      [    304  13,640     278 ]                       
+                                 42182.30 inf/s                      [   2.1%   95.9%    2.0% ]                       
+   -------------------------------------------------------------------------------------------------------------------
+   HW: 95.9%, SW: 0.0%, SW ctrl: 4.1%
+   
+   Statistic per tensor
+   ---------------------------------------------------------------------------------------
+   tensor   #      type[shape]:size      min   max     mean      std  name                
+   ---------------------------------------------------------------------------------------
+   I.0      4000   i8[1,16]:16          -128   127   -5.073   75.648  Input_0_out_0       
+   O.0      4000   i8[1,1]:1             -64   103   62.138   39.512  Quantize_14_out_0   
+   ---------------------------------------------------------------------------------------
+ 
+Saving validation data...
+ output directory: C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\run\run-1\.ai\st_ai_output
+ creating C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\run\run-1\.ai\st_ai_output\network_val_io.npz
+ m_outputs_1: (4000, 1)/int8, min/max=[-64, 103], mean/std=[62.127250, 39.507703], nl_3
+ c_outputs_1: (4000, 1, 1, 1)/int8, min/max=[-64, 103], mean/std=[62.137750, 39.512046], scale=0.003906250 zp=-128, nl_3
+
+ 
+Computing the metrics...
+
+ Accuracy report #1 for the generated TARGET C-model
+ ----------------------------------------------------------------------------------------------------
+ notes: - data type is different: r/float32 instead p/int8
+        - p/int8 data are dequantized with s=0.00390625 zp=-128
+        - computed against the provided ground truth values
+        - 4000 samples (1 items per sample)
+
+  acc=n.a. rmse=0.025511915 mae=0.008982963 l2r=0.033630569 mean=-0.002258 std=0.025415 snr=29.441128 nse=0.972860 cos=0.999437 
+
+ Accuracy report #1 for the reference model
+ ----------------------------------------------------------------------------------------------------
+ notes: - data type is different: r/float32 instead p/int8
+        - p/int8 data are dequantized with s=0.00390625 zp=-128
+        - computed against the provided ground truth values
+        - 4000 samples (1 items per sample)
+
+  acc=n.a. rmse=0.025492642 mae=0.008972689 l2r=0.033607095 mean=-0.002217 std=0.025399 snr=29.447694 nse=0.972901 cos=0.999437 
+
+ Cross accuracy report #1 (reference vs C-model)
+ ----------------------------------------------------------------------------------------------------
+ notes: - r/int8 data are dequantized with s=0.00390625 zp=-128
+        - p/int8 data are dequantized with s=0.00390625 zp=-128
+        - the output of the reference model is used as ground truth/reference value
+        - 4000 samples (1 items per sample)
+
+  acc=n.a. rmse=0.000741159 mae=0.000125000 l2r=0.000977018 mean=-0.000041 std=0.000740 snr=60.201454 nse=0.999977 cos=0.999999 
+
+
+Evaluation report (summary)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Output              acc    rmse          mae           l2r           mean        std        snr         nse        cos        tensor                               
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TARGET c-model #1   n.a.   0.025511915   0.008982963   0.033630569   -0.002258   0.025415   29.441128   0.972860   0.999437   'nl_3', 4000 x int8(1x1), m_id=[3]   
+original model #1   n.a.   0.025492642   0.008972689   0.033607095   -0.002217   0.025399   29.447694   0.972901   0.999437   'nl_3', 4000 x int8(1x1), m_id=[3]   
+X-cross #1          n.a.   0.000741159   0.000125000   0.000977018   -0.000041   0.000740   60.201454   0.999977   0.999999   'nl_3', 4000 x int8(1x1), m_id=[3]   
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ acc  : Accuracy (class, axis=-1)
+ rmse : Root Mean Squared Error
+ mae  : Mean Absolute Error
+ l2r  : L2 relative error
+ mean : Mean error
+ std  : Standard deviation error
+ snr  : Signal-to-Noise Ratio (SNR), bigger is better
+ nse  : Nash-Sutcliffe efficiency criteria, bigger is better, best=1, range=(-inf, 1]
+ cos  : COsine Similarity, bigger is better, best=1, range=(0, 1]

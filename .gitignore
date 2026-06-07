@@ -1,0 +1,6 @@
+# 빌드 결과물 제외
+Debug/
+Release/
+*.bin
+*.elf
+*.map

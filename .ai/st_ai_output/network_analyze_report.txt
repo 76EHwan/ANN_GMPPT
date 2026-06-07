@@ -1,0 +1,78 @@
+ST Edge AI Core v4.0.0-20500 359356bb0
+Created date          : 2026-06-01 12:20:02
+Parameters            : analyze --model C:\Users\kth59\OneDrive\Desktop\tjs\0531\gmpp_model_int8.tflite --valinput C:\Users\kth59\OneDrive\Desktop\tjs\0531\validation_data_cubeai.npz --mode target --st-neural-art user_profile@C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\profile-neural-art.json --name network --verbosity 1 --c-api st-ai --workspace C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\st_ai_ws --output C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\st_ai_output --target stm32n6
+
+Model name - gmpp_model_int8
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+m_id   layer (original)               oshape        param/size     macc                connected to 
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+0      serving_default_scan_buf0 ()   [b:1,c:16]                                                    
+       tfl_pseudo_qconst5 ()          [b:32,c:16]   512/512                                         
+       tfl_pseudo_qconst4 ()          [b:32]        32/128                                          
+       gemm_0 (FULLY_CONNECTED)       [b:1,c:32]                    544   serving_default_scan_buf0 
+                                                                                 tfl_pseudo_qconst5 
+                                                                                 tfl_pseudo_qconst4 
+       nl_0_nl (FULLY_CONNECTED)      [b:1,c:32]                     32                      gemm_0 
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+1      tfl_pseudo_qconst3 ()          [b:16,c:32]   512/512                                         
+       tfl_pseudo_qconst2 ()          [b:16]        16/64                                           
+       gemm_1 (FULLY_CONNECTED)       [b:1,c:16]                    528                     nl_0_nl 
+                                                                                 tfl_pseudo_qconst3 
+                                                                                 tfl_pseudo_qconst2 
+       nl_1_nl (FULLY_CONNECTED)      [b:1,c:16]                     16                      gemm_1 
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+2      tfl_pseudo_qconst1 ()          [b:1,c:16]    16/16                                           
+       tfl_pseudo_qconst ()           [b:1]         1/4                                             
+       gemm_2 (FULLY_CONNECTED)       [b:1,c:1]                      17                     nl_1_nl 
+                                                                                 tfl_pseudo_qconst1 
+                                                                                  tfl_pseudo_qconst 
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+3      nl_3 (LOGISTIC)                [b:1,c:1]                      10                      gemm_2 
+------ ------------------------------ ------------- ------------ ------ --------------------------- 
+model: macc=1,147 weights=1,236 activations=-- io=--
+
+
+
+
+
+Compilation details
+------------------------------------------------------------------------------------
+Compiler version: 1.1.3-262
+Compiler arguments:  -i C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\st_ai_output\gmpp_model_int8_OE_3_3_1.onnx --json-quant-file C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\st_ai_output\gmpp_model_int8_OE_3_3_1_Q.json -g network.c --load-mdesc D:\STAI\4.0\Utilities\configs\stm32n6.mdesc --load-mpool C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\memory_pool.mpool --load-cdesc D:\STAI\4.0\Utilities\configs\cortex-m55.cdesc --save-mpool-file C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\st_ai_ws\neural_art__network\memory_pool.mpool --out-dir-prefix C:\Users\kth59\.stm32cubeaistudio\workspace\ANN_GMPPT\.ai\st_ai_ws\neural_art__network/ --network-name network --native-float --cache-maintenance --Ocache-opt --enable-virtual-mem-pools --Os --Oauto-sched --enable-epoch-controller --output-info-file c_info.json --generate-stai
+====================================================================================
+
+Memory usage information  (input/output buffers are included in activations)
+------------------------------------------------------------------------------------
+	flexMEM    [0x34000000 - 0x34000000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM1    [0x34064000 - 0x34064000]:          0  B /          0  B  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	cpuRAM2    [0x34100000 - 0x34200000]:          0  B /      1.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM3    [0x34200000 - 0x34270000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM4    [0x34270000 - 0x342E0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	npuRAM5    [0x342E0000 - 0x34350000]:         48  B /    448.000 kB  (  0.01 % used) -- weights:          0  B (  0.00 % used)  activations:         48  B (  0.01 % used)
+	npuRAM6    [0x34350000 - 0x343C0000]:          0  B /    448.000 kB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+	octoFlash  [0x71000000 - 0x78000000]:      1.031 kB /    112.000 MB  (  0.00 % used) -- weights:      1.031 kB (  0.00 % used)  activations:          0  B (  0.00 % used)
+	hyperRAM   [0x90000000 - 0x92000000]:          0  B /     32.000 MB  (  0.00 % used) -- weights:          0  B (  0.00 % used)  activations:          0  B (  0.00 % used)
+---
+Total:                                             1.078 kB                                  -- weights:      1.031 kB                  activations:         48  B                   
+====================================================================================
+
+
+Used memory ranges
+------------------------------------------------------------------------------------
+	npuRAM5    [0x342E0000 - 0x34350000]: 0x342E0000-0x342E0030
+	octoFlash  [0x71000000 - 0x78000000]: 0x71000000-0x71000420
+====================================================================================
+
+Epochs details
+------------------------------------------------------------------------------------
+Total number of epochs                               2
+>> pure software (SW) epochs                         0
+>> hybrid epochs (using both software and hardware)  0
+>> pure hardware (HW or EC) epochs                   2  (implemented in 1 epoch controller blobs/meta epochs)
+---
++------------------+------+---------+
+| epoch ID         | Type | Details |
++------------------+------+---------+
+| epochs    2 -> 3 |  EC  |         |
++------------------+------+---------+
+====================================================================================
