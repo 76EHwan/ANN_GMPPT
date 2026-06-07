@@ -209,18 +209,18 @@ int acquire_and_process_data() {
 	/* USER CODE BEGIN acquire_and_process_data */
 	int8_t *in = (int8_t*) stai_input[0];
 
-	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
 
 	for (uint8_t i = 0; i < 8; i++) {
 		uint32_t duty = htim1.Instance->ARR / 8 * (i + 1);
-		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, duty);
+		__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, duty);
 		HAL_Delay(5); /* duty 변경 후 정착 대기 */
 
 		adc_done = 0;
 		MODIFY_REG(hadc2.Instance->CFGR1, ADC_CFGR1_DMNGT, ADC_CFGR1_DMNGT_0);
 		if (HAL_ADC_Start_DMA(&hadc2, uhADC2ConvertedData, 2) != HAL_OK) {
 			BSP_LED_On(LED_RED);
-			HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+			HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
 			return -1;
 		}
 		uint32_t t0 = HAL_GetTick();
@@ -228,7 +228,7 @@ int acquire_and_process_data() {
 			if (HAL_GetTick() - t0 > 100) {
 				BSP_LED_On(LED_RED);
 				HAL_ADC_Stop_DMA(&hadc2);
-				HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+				HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
 				return -1;
 			}
 		}
@@ -240,7 +240,7 @@ int acquire_and_process_data() {
 		HAL_Delay(10);
 	}
 
-	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
 
 	SCB_CleanDCache_by_Addr((uint32_t*) in, 16);
 	return 0;
@@ -306,6 +306,16 @@ int post_process() {
 	/* USER CODE END post_process */
 }
 
+/* ============================================================
+ * Injection test (no ADC, no P&O).  <-- ADDED
+ * Must sit here: after quantize()/stai_input/stai_output/aiRun are defined,
+ * and before STM32CubeAI_Studio_AI_Process() which calls ai_inject_test().
+ * NOTE: this line is NOT inside a USER CODE block, so re-add it after any
+ *       .ioc regeneration. Keep the test file as .h so the IDE does NOT
+ *       auto-compile it as a separate source.
+ * ============================================================ */
+#include "ai_inject_test.h"
+
 /* 
  * Example of main loop function
  */
@@ -335,7 +345,13 @@ void STM32CubeAI_Studio_AI_Init(void) {
 }
 
 void STM32CubeAI_Studio_AI_Process(void) {
-	main_loop();
+	/* --- injection test: run once, print pred vs true, then idle --- */
+	pwm_test();   /* duty 10→90% 무한 스윕 */
+	while (1) {
+		HAL_Delay(1000);
+	}
+	/* 원래 live 경로로 돌릴 땐 위 두 줄 지우고 아래 주석 해제 */
+	// main_loop();
 }
 
 void STM32CubeAI_Studio_AI_Deinit(void) {

@@ -1,0 +1,6 @@
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1407:22:LL_AHB4_GRP1_EnableClock	1
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1755:22:LL_AHB5_GRP1_EnableClock	1
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1891:22:LL_AHB5_GRP1_DisableClock	1
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/FSBL/Core/Src/xspi.c:30:6:MX_XSPI2_Init	3
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/FSBL/Core/Src/xspi.c:75:6:HAL_XSPI_MspInit	3
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/FSBL/Core/Src/xspi.c:130:6:HAL_XSPI_MspDeInit	2

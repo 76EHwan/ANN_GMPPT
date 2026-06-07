@@ -1,0 +1,6 @@
+../../../Drivers/STM32N6xx_HAL_Driver/Inc/stm32n6xx_ll_bus.h:1165:22:LL_AHB3_GRP1_EnableClock	1
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/Core/Src/main.c:71:5:main	5
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/Core/Src/main.c:136:6:PeriphCommonClock_Config	2
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/Core/Src/main.c:155:15:SystemIsolation_Config	2
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/Core/Src/main.c:229:6:MPU_Config	1
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/Core/Src/main.c:271:6:Error_Handler	1
