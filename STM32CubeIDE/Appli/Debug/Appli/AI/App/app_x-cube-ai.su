@@ -1,0 +1,17 @@
+../../../Drivers/CMSIS/Include/m-profile/armv8m_pmu.h:222:22:ARM_PMU_CYCCNT_Reset	4	static
+../../../Drivers/CMSIS/Include/m-profile/armv8m_pmu.h:263:26:ARM_PMU_Get_CCNTR	4	static
+../../../Middlewares/ST/AI/Misc/Inc/aiTestUtility.h:321:22:cyclesCounterInit	40	static
+../../../Middlewares/ST/AI/Misc/Inc/aiTestUtility.h:357:22:cyclesCounterStart	8	static
+../../../Middlewares/ST/AI/Misc/Inc/aiTestUtility.h:374:26:cyclesCounterEnd	88	static
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:62:5:aiInit	16	static
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:77:5:aiDeinit	16	static
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:91:18:aiRun	48	static
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:155:6:HAL_ADC_ConvCpltCallback	16	static
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:161:22:quantize	24	static
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:170:12:adc_read_VI	40	static,ignoring_inline_asm
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:192:5:acquire_and_process_data	72	static,ignoring_inline_asm
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:243:5:post_process	80	static
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:318:6:main_loop	8	static
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:339:6:STM32CubeAI_Studio_AI_Init	8	static
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:347:6:STM32CubeAI_Studio_AI_Process	8	static
+C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.c:358:6:STM32CubeAI_Studio_AI_Deinit	8	static

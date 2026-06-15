@@ -3,4 +3,5 @@ Debug/
 Release/
 *.bin
 *.elf
-*.map
+*.mapSTM32CubeIDE/Appli/Debug/
+*.bin

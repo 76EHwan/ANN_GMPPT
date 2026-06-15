@@ -77,9 +77,7 @@ Appli/AI/App/app_x-cube-ai.o: \
  ../../../Middlewares/ST/AI/Misc/Inc/ai_device_adaptor.h \
  ../../../Drivers/CMSIS/Include/cmsis_compiler.h \
  ../../../Appli/AI/App/bsp_ai.h \
- ../../../Middlewares/ST/AI/Misc/Inc/lc_print.h \
- C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/ai_inject_test.h \
- C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/test_vectors.h
+ ../../../Middlewares/ST/AI/Misc/Inc/lc_print.h
 C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/app_x-cube-ai.h:
 ../../../Middlewares/ST/AI/Inc/stai.h:
 ../../../Middlewares/ST/AI/Inc/ai_datatypes_defines.h:
@@ -159,5 +157,3 @@ C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/npu_cache.h:
 ../../../Drivers/CMSIS/Include/cmsis_compiler.h:
 ../../../Appli/AI/App/bsp_ai.h:
 ../../../Middlewares/ST/AI/Misc/Inc/lc_print.h:
-C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/ai_inject_test.h:
-C:/Users/kth59/.stm32cubeaistudio/workspace/ANN_GMPPT/Appli/AI/App/test_vectors.h:
